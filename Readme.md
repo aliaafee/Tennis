@@ -1,6 +1,6 @@
 # Tennis
 
-Pong like game that runs on ATtiny85 Microcontroller, with SSD1306 OLED (128x64 0.96 inch) display.
+Pong like two player game that runs on ATtiny85 Microcontroller, with SSD1306 OLED (128x64 0.96 inch) display. Input with potentiometers, one for each player, and four buttons.
 
 ## Preamble
 
