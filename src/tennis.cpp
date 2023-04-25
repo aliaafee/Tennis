@@ -33,18 +33,23 @@ void Tennis::playLoop()
     paddleInput();
 
     if (ball.y >= (64 - 1) || ball.y < 0)
+    {
+        gamepad->playTone(CORD_G, 70);
         ball.v_y = -ball.v_y;
+    }
 
     if (ball.x < 4)
     {
         if (hitPaddle(ball, leftPaddle))
         {
             ball.v_x = -ball.v_x;
+            gamepad->playTone(CORD_C, 100);
         }
         else
         {
             rightScore += 1;
             updateScore();
+            playDeadTone();
             currentLoop = &Tennis::rightServeLoop;
         }
     }
@@ -54,11 +59,13 @@ void Tennis::playLoop()
         if (hitPaddle(ball, rightPaddle))
         {
             ball.v_x = -ball.v_x;
+            gamepad->playTone(CORD_C, 100);
         }
         else
         {
             leftScore += 1;
             updateScore();
+            playDeadTone();
             currentLoop = &Tennis::leftServeLoop;
         }
     }
@@ -165,7 +172,7 @@ void Tennis::leftServeLoop()
 void Tennis::paddleInput()
 {
     rightPaddle.y = map(gamepad->getRightPot(), 0, 1023, 5, 59);
-    leftPaddle.y = map(gamepad->getLeftPot(), 0, 1023, 5, 59);
+    leftPaddle.y = map(gamepad->getLeftPot(), 0, 1023, 59, 5);
 }
 
 void Tennis::drawBall(int &x, int &y, byte color)
@@ -223,4 +230,13 @@ void Tennis::updatePaddle(Paddle &paddle)
         drawPaddle(paddle.x, paddle.y, paddle.h, 1);
         paddle.p_y = paddle.y;
     }
+}
+
+void Tennis::playDeadTone()
+{
+    gamepad->playTone(CORD_C, 50);
+    delay(50);
+    gamepad->playTone(CORD_D, 50);
+    delay(50);
+    gamepad->playTone(CORD_E, 50);
 }

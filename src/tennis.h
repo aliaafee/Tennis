@@ -59,6 +59,8 @@ private:
     void updateScore();
     void updateBall();
     void updatePaddle(Paddle &paddle);
+
+    void playDeadTone();
 };
 
 #endif // __TENNIS_H__

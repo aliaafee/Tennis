@@ -18,6 +18,8 @@ void MiniPad::begin(App *app)
 
     pinMode(BTN_INPUT, INPUT_PULLUP);
 
+    pinMode(BUZZER, OUTPUT);
+
     screen->init();
     screen->clear();
 
@@ -41,6 +43,11 @@ void MiniPad::loop()
 int MiniPad::getPotValue_(uint8_t potPin)
 {
     return analogRead(potPin);
+}
+
+void MiniPad::playTone(unsigned long frequency, unsigned long duration)
+{
+    tone(BUZZER, frequency, duration);
 }
 
 int MiniPad::getButtonValue_()

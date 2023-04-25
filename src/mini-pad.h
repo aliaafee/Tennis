@@ -8,6 +8,13 @@
 #include "pin-config.h"
 #include "app.h"
 
+#define CORD_C 2100
+#define CORD_D 1870
+#define CORD_E 1670
+#define CORD_f 1580
+#define CORD_G 1400
+#define CORD_R 0
+
 #define BTN_RIGHT_A 4
 #define BTN_RIGHT_B 3
 #define BTN_LEFT_A 2
@@ -31,12 +38,15 @@ public:
     bool pressedLeftA() { return pressedButton_ == BTN_LEFT_A ? true : false; }
     bool pressedLeftB() { return pressedButton_ == BTN_LEFT_B ? true : false; }
 
+    void playTone(unsigned long frequency, unsigned long duration);
+
     int getButtonValue_();
+
 private:
     int buttonReading_;
     int pressedButton_;
     int getPotValue_(uint8_t potPin);
-    
+
     App *currentApp;
 };
 

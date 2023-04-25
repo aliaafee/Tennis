@@ -8,4 +8,6 @@
 
 #define BTN_INPUT A0
 
+#define BUZZER 1
+
 #endif
