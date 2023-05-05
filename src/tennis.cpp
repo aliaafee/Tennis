@@ -128,6 +128,7 @@ void Tennis::rightServeLoop()
         ball.v_x = -2;
         ball.v_y = 2;
         currentLoop = &Tennis::playLoop;
+        gamepad->playTone(CORD_C, 100);
         return;
     }
 
@@ -136,6 +137,7 @@ void Tennis::rightServeLoop()
         ball.v_x = -2;
         ball.v_y = -2;
         currentLoop = &Tennis::playLoop;
+        gamepad->playTone(CORD_C, 100);
         return;
     }
 }
@@ -157,6 +159,7 @@ void Tennis::leftServeLoop()
         ball.v_x = 2;
         ball.v_y = 2;
         currentLoop = &Tennis::playLoop;
+        gamepad->playTone(CORD_C, 100);
         return;
     }
 
@@ -165,6 +168,7 @@ void Tennis::leftServeLoop()
         ball.v_x = 2;
         ball.v_y = -2;
         currentLoop = &Tennis::playLoop;
+        gamepad->playTone(CORD_C, 100);
         return;
     }
 }
