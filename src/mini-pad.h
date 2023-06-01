@@ -3,7 +3,8 @@
 
 #include <Arduino.h>
 
-#include <GyverOLED.h>
+// #include <GyverOLED.h>
+#include "ssd1306-oled.h"
 
 #include "pin-config.h"
 #include "app.h"
@@ -23,9 +24,13 @@
 class MiniPad
 {
 public:
-    GyverOLED<SSD1306_128x64, OLED_NO_BUFFER> *screen;
+    // GyverOLED<SSD1306_128x64, OLED_NO_BUFFER> *screen;
 
-    MiniPad() : screen(new GyverOLED<SSD1306_128x64, OLED_NO_BUFFER>()){};
+    // MiniPad() : screen(new GyverOLED<SSD1306_128x64, OLED_NO_BUFFER>()){};
+
+    SSD1306_OLED *screen;
+
+    MiniPad() : screen(new SSD1306_OLED()) {};
 
     void begin(App *app);
     void loop();
