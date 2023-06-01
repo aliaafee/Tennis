@@ -1,16 +1,5 @@
 #include "mini-pad.h"
 
-// MiniPad::MiniPad()
-// {
-//     screen = new GyverOLED<SSD1306_128x64, OLED_NO_BUFFER>();
-//     // screen = new miniOLED();
-// }
-
-// MiniPad::~MiniPad()
-// {
-//     ;
-// }
-
 void MiniPad::begin(App *app)
 {
     pinMode(POT_RIGHT, INPUT);
@@ -30,7 +19,7 @@ void MiniPad::loop()
 {
     if (currentApp == NULL)
         return;
-    
+
     pressedButton_ = getButtonValue_();
 
     (currentApp)->loop();
@@ -55,7 +44,7 @@ int MiniPad::getButtonValue_()
     /*
     Button setup as potential divider and the reset pin used as input
 
-        5v - 
+        5v -
             |
             1K
             |---/ S1---
@@ -74,13 +63,16 @@ int MiniPad::getButtonValue_()
 
     buttonReading_ = analogRead(BTN_INPUT);
 
-    if (buttonReading_ < 550) return 4;
-    if (buttonReading_ < 650) return 3;
-    if (buttonReading_ < 790) return 2;
-    if (buttonReading_ < 920) return 1;
+    if (buttonReading_ < 550)
+        return 4;
+    if (buttonReading_ < 650)
+        return 3;
+    if (buttonReading_ < 790)
+        return 2;
+    if (buttonReading_ < 920)
+        return 1;
 
     return 0;
 
-
-    //return analogRead(BTN_INPUT);
+    // return analogRead(BTN_INPUT);
 }
